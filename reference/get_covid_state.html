@@ -117,9 +117,9 @@ retrieve any state.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_covid_state</span>(
-  <span class='kw'>state</span> <span class='kw'>=</span> <span class='st'>"North Carolina"</span>,
-  <span class='kw'>select_county</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>data_source</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cone"</span>, <span class='st'>"hokpins"</span>)
+  state = <span class='st'>"North Carolina"</span>,
+  select_county = <span class='kw'>NULL</span>,
+  data_source = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cone"</span>, <span class='st'>"hokpins"</span>)
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -142,13 +142,16 @@ one of "cone" or "hopkins"</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 <span class='co'># To get all counties</span>
 <span class='fu'>get_covid_state</span>()
 
 <span class='co'># To get a single county</span>
-<span class='fu'>get_covid_state</span>(<span class='kw'>select_county</span> <span class='kw'>=</span> <span class='st'>"Guilford"</span>)
-}</div></pre>
+<span class='fu'>get_covid_state</span>(select_county = <span class='st'>"Guilford"</span>)
+}
+
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -164,7 +167,7 @@ one of "cone" or "hopkins"</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.0.</p>
 </div>
 
       </footer>
