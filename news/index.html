@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pull Covid Data by Zip Code — get_covid_zip • nccovid</title>
+<title>Changelog • nccovid</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,7 @@
 
 
 
-<meta property="og:title" content="Pull Covid Data by Zip Code — get_covid_zip" />
-<meta property="og:description" content="This function will pull down NC Covid Information by Zip Code" />
+<meta property="og:title" content="Changelog" />
 
 
 
@@ -59,7 +58,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -106,25 +105,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pull Covid Data by Zip Code</h1>
-    
-    <div class="hidden name"><code>get_covid_zip.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      
     </div>
 
-    <div class="ref-description">
-    <p>This function will pull down NC Covid Information by Zip Code</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>get_covid_zip</span><span class='op'>(</span><span class='op'>)</span></pre>
-
-
-
+    <div id="nccovid-002" class="section level1">
+<h1 class="page-header" data-toc-text="0.0.2">
+<a href="#nccovid-002" class="anchor"></a>nccovid 0.0.2</h1>
+<ul>
+<li>Added logic to account for data dumps from North Carolina with an optional argument in <code>get_covid_state</code> called <code>report_adj</code> with a default of <code>FALSE</code> to account for two points
+<ul>
+<li>2020-09-25 when all antigen tests were added</li>
+<li>2020-11-13/2020-11-14 when data collection times changed and only 10 hours of data were collect.</li>
+</ul>
+</li>
+</ul>
+<p>The current method just imputes the previous days value for September for the death and case incidence on 25 September. For the November reporting change the 13/14 days are averaged across the two days. This should smooth out any reporting irregularity. This is important for calculating R or any other metrics that rely on daily data.</p>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 
