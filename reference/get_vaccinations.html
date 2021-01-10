@@ -121,12 +121,12 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>add_population</th>
-      <td><p>a boolean, default of TRUE to add a population</p></td>
+      <th>county_list</th>
+      <td><p>a string, the county to pull. default is all counties</p></td>
     </tr>
     <tr>
-      <th>county</th>
-      <td><p>a string, the county to pull. default is all counties</p></td>
+      <th>add_population</th>
+      <td><p>a boolean, default of TRUE to add a population</p></td>
     </tr>
     </table>
 
@@ -137,7 +137,10 @@
 <span class='fu'>get_vaccinations</span><span class='op'>(</span>county_list <span class='op'>=</span> <span class='st'>"Guilford"</span><span class='op'>)</span>
 
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in get_vaccinations(county_list = "Guilford"): object 'county' not found</span></div></pre>
+</div><div class='output co'>#&gt;      county       date dose_1 dose_2 daily_dose_1 daily_dose_2 days_available
+#&gt; 1: Guilford 2021-01-10   5474    268         5474          268             27
+#&gt;    population
+#&gt; 1:     545348</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
