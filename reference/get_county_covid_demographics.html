@@ -143,12 +143,12 @@ interest</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://Rdatatable.gitlab.io/data.table'>data.table</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-datatable.com'>data.table</a></span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘data.table’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:dplyr’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    between, first, last</span></div><div class='input'><span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>get_county_covid_demographics</span><span class='op'>(</span>region <span class='op'>=</span> <span class='st'>"Guilford"</span>, demographic <span class='op'>=</span> <span class='st'>"age"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Data valid as of: 2021-02-07</span>
+</div><div class='output co'>#&gt; <span class='message'>Data valid as of: 2021-02-21</span>
 #&gt; <span class='message'>Use with caution.</span></div><div class='input'>
 <span class='va'>out</span><span class='op'>[</span>,<span class='va'>per_capita</span><span class='op'>:=</span><span class='va'>cases</span><span class='op'>/</span><span class='op'>(</span><span class='va'>population</span><span class='op'>/</span><span class='fl'>100000</span><span class='op'>)</span><span class='op'>]</span>
 </div><div class='output co'>#&gt;          metric   county    week_of demographic cases deaths category
@@ -158,11 +158,11 @@ interest</p></td>
 #&gt;   4:       0-17 Guilford 2020-05-03   age_group     7      0      age
 #&gt;   5:       0-17 Guilford 2020-05-10   age_group     7      0      age
 #&gt;  ---                                                                 
-#&gt; 335: Suppressed Guilford 2020-07-26   age_group     0      0     &lt;NA&gt;
-#&gt; 336: Suppressed Guilford 2020-07-26   age_group     0      0     &lt;NA&gt;
-#&gt; 337: Suppressed Guilford 2020-07-26   age_group     0      0     &lt;NA&gt;
-#&gt; 338: Suppressed Guilford 2020-07-26   age_group     0      0     &lt;NA&gt;
-#&gt; 339: Suppressed Guilford 2020-07-26   age_group     0      0     &lt;NA&gt;
+#&gt; 353: Suppressed Guilford 2020-08-09   age_group     0      1     &lt;NA&gt;
+#&gt; 354: Suppressed Guilford 2020-08-16   age_group     0      1     &lt;NA&gt;
+#&gt; 355: Suppressed Guilford 2020-08-16   age_group     0      1     &lt;NA&gt;
+#&gt; 356: Suppressed Guilford 2020-09-20   age_group     0      1     &lt;NA&gt;
+#&gt; 357: Suppressed Guilford 2021-02-14   age_group     0      1     &lt;NA&gt;
 #&gt;      population per_capita
 #&gt;   1:     117830  0.8486803
 #&gt;   2:     117830  0.8486803
@@ -170,11 +170,11 @@ interest</p></td>
 #&gt;   4:     117830  5.9407621
 #&gt;   5:     117830  5.9407621
 #&gt;  ---                      
-#&gt; 335:         NA         NA
-#&gt; 336:         NA         NA
-#&gt; 337:         NA         NA
-#&gt; 338:         NA         NA
-#&gt; 339:         NA         NA</div><div class='input'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>out</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>week_of</span>, <span class='va'>per_capita</span>, colour <span class='op'>=</span> <span class='va'>metric</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
+#&gt; 353:         NA         NA
+#&gt; 354:         NA         NA
+#&gt; 355:         NA         NA
+#&gt; 356:         NA         NA
+#&gt; 357:         NA         NA</div><div class='input'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>out</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>week_of</span>, <span class='va'>per_capita</span>, colour <span class='op'>=</span> <span class='va'>metric</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"top"</span><span class='op'>)</span><span class='op'>+</span>
@@ -184,7 +184,7 @@ subtitle <span class='op'>=</span> <span class='st'>"Guilford County, North Caro
 x <span class='op'>=</span> <span class='st'>"Cases per 100k"</span>,
 y <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 52 row(s) containing missing values (geom_path).</span></div><div class='img'><img src='get_county_covid_demographics-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 58 row(s) containing missing values (geom_path).</span></div><div class='img'><img src='get_county_covid_demographics-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
