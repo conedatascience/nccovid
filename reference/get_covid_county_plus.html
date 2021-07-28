@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Increase Cases — increase_cases • nccovid</title>
+<title>Append Additional Information to COVID-19 Count Information — get_covid_county_plus • nccovid</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Increase Cases — increase_cases" />
-<meta property="og:description" content="Increase case count in the presence of high testing positivity" />
+<meta property="og:title" content="Append Additional Information to COVID-19 Count Information — get_covid_county_plus" />
+<meta property="og:description" content="Combined NCDHHS Case and Death Counts with CDC Details" />
 
 
 
@@ -106,41 +106,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Increase Cases</h1>
+    <h1>Append Additional Information to COVID-19 Count Information</h1>
     
-    <div class="hidden name"><code>increase_cases.Rd</code></div>
+    <div class="hidden name"><code>get_covid_county_plus.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Increase case count in the presence of high testing positivity</p>
+    <p>Combined NCDHHS Case and Death Counts with CDC Details</p>
     </div>
 
-    <pre class="usage"><span class='fu'>increase_cases</span><span class='op'>(</span><span class='va'>observed_cases</span>, <span class='va'>pos_rate</span>, m <span class='op'>=</span> <span class='fl'>10.83</span>, k <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_covid_county_plus</span><span class='op'>(</span>county <span class='op'>=</span> <span class='cn'>NULL</span>, adjusted <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>observed_cases</th>
-      <td><p>numberic, the reported cases</p></td>
+      <th>county</th>
+      <td><p>a string vector, representing the counties of interest. If left
+NULL then all counties in North Carolina will be returned</p></td>
     </tr>
     <tr>
-      <th>pos_rate</th>
-      <td><p>numberic, the observed positivity rate</p></td>
-    </tr>
-    <tr>
-      <th>m</th>
-      <td><p>scaling factor</p></td>
-    </tr>
-    <tr>
-      <th>k</th>
-      <td><p>scaling factor with default of 1/2 on range [0,1]</p></td>
+      <th>adjusted</th>
+      <td><p>a logical, should the adjusted cases be used (to account for
+reporting gaps on weekends and holidays from NCDHHS). Defaults to <code>TRUE</code></p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4809590/'>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4809590/</a></p>
+    <p>a data.table with combined values for all counties or specified counties</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
