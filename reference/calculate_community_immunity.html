@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CDC Social Vulnerability for North Carolina by County — nc_svi_county • nccovid</title>
+<title>Calculating Community Immunity — calculate_community_immunity • nccovid</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="CDC Social Vulnerability for North Carolina by County — nc_svi_county" />
-<meta property="og:description" content="CDC Social Vulnerability for North Carolina by County" />
+<meta property="og:title" content="Calculating Community Immunity — calculate_community_immunity" />
+<meta property="og:description" content="Considering Proportion of the Vaccinated and Those Who Were Naturall
+Infected" />
 
 
 
@@ -106,25 +107,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>CDC Social Vulnerability for North Carolina by County</h1>
+    <h1>Calculating Community Immunity</h1>
     
-    <div class="hidden name"><code>nc_svi_county.Rd</code></div>
+    <div class="hidden name"><code>calculate_community_immunity.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>CDC Social Vulnerability for North Carolina by County</p>
+    <p>Considering Proportion of the Vaccinated and Those Who Were Naturall
+Infected</p>
     </div>
 
-    <pre class="usage"><span class='va'>nc_svi_county</span></pre>
+    <pre class="usage"><span class='fu'>calculate_community_immunity</span><span class='op'>(</span><span class='va'>prop_infected</span>, <span class='va'>prop_vaccinated</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>prop_infected</th>
+      <td><p>a numeric representing the proportion of the population
+with natural infection</p></td>
+    </tr>
+    <tr>
+      <th>prop_vaccinated</th>
+      <td><p>a numeric representing the proportion of the
+population that is vaccinated.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>a data.frame</p>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>[U.S. Centers for Disease Prevention and Control (CDC) Social Vulnerability Index (SVI)](https://svi.cdc.gov/)</p>
+    <p>Lopman, B. A. et al. A framework for monitoring population immunity 
+    to SARS-CoV-2. Annals of Epidemiology S1047279721002635 (2021) 
+    <a href='doi:10.1016/j.annepidem.2021.08.013'>doi:10.1016/j.annepidem.2021.08.013</a>.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='op'>{</span>
+
+<span class='fu'>calculate_community_immunity</span><span class='op'>(</span><span class='fl'>.3</span>,<span class='fl'>.5</span><span class='op'>)</span>
+
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; [1] 0.65</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
