@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pull Covid-19 Demographics — get_covid_demographics • nccovid</title>
+<title>Convert Growth Rate to Reproduction Number — r2R • nccovid</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Pull Covid-19 Demographics — get_covid_demographics" />
-<meta property="og:description" content="These data originate from the North Carolina DHHS Covid-19 Dashboard" />
+<meta property="og:title" content="Convert Growth Rate to Reproduction Number — r2R" />
+<meta property="og:description" content="Convenience function to convert a growth rate (little r)
+to a reproduction number (R) given a particular
+generation time." />
 
 
 
@@ -106,19 +108,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pull Covid-19 Demographics</h1>
+    <h1>Convert Growth Rate to Reproduction Number</h1>
     
-    <div class="hidden name"><code>get_covid_demographics.Rd</code></div>
+    <div class="hidden name"><code>r2R.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These data originate from the North Carolina DHHS Covid-19 Dashboard</p>
+    <p>Convenience function to convert a growth rate (little r)
+to a reproduction number (R) given a particular
+generation time.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_covid_demographics</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>r2R</span><span class='op'>(</span><span class='va'>r</span>, mu_gamma <span class='op'>=</span> <span class='fl'>4.7</span>, sd_gamma <span class='op'>=</span> <span class='fl'>2.9</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>r</th>
+      <td><p>a double representing the growth rate</p></td>
+    </tr>
+    <tr>
+      <th>mu_gamma</th>
+      <td><p>a double representing mean of the 
+gamma function characterizing the generation time.</p></td>
+    </tr>
+    <tr>
+      <th>sd_gamma</th>
+      <td><p>a double representing standard deviation of the 
+gamma function characterizing the generation time.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0144'>https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0144</a></p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='va'>cases</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span><span class='fl'>10</span>,<span class='fl'>2.5</span><span class='op'>)</span>
+<span class='va'>t</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>
+<span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>cases</span> <span class='op'>~</span> <span class='va'>t</span>, family <span class='op'>=</span> <span class='st'>"poisson"</span><span class='op'>)</span>
+
+<span class='fu'>r2R</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;         t 
+#&gt; 0.9480974 </div><div class='input'>
 
 
-
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
