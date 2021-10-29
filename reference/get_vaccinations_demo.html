@@ -94,7 +94,12 @@ calculate distribution and/or per capita rates." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/conedatascience/nccovid/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -109,7 +114,7 @@ calculate distribution and/or per capita rates." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Pull Vaccinations by County and Demographic</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/conedatascience/nccovid/blob/master/R/get_vaccinations_demo.R'><code>R/get_vaccinations_demo.R</code></a></small>
     <div class="hidden name"><code>get_vaccinations_demo.Rd</code></div>
     </div>
 
@@ -149,41 +154,41 @@ partially or fully vaccinated. Default of NULL returns both.</p></td>
 
 <span class='op'>}</span>
 </div><div class='output co'>#&gt;      date_pulled    week_of aggregation_level   county demographic
-#&gt;   1:  2021-10-24 2021-08-23            County Guilford        Race
-#&gt;   2:  2021-10-24 2021-03-29            County Guilford        Race
-#&gt;   3:  2021-10-24 2021-04-05            County Guilford        Race
-#&gt;   4:  2021-10-24 2021-08-09            County Guilford        Race
-#&gt;   5:  2021-10-24 2021-08-30            County Guilford        Race
+#&gt;   1:  2021-10-28 2021-06-14            County Guilford        Race
+#&gt;   2:  2021-10-28 2021-06-21            County Guilford        Race
+#&gt;   3:  2021-10-28 2021-06-28            County Guilford        Race
+#&gt;   4:  2021-10-28 2021-07-05            County Guilford        Race
+#&gt;   5:  2021-10-28 2021-07-12            County Guilford        Race
 #&gt;  ---                                                              
-#&gt; 267:  2021-10-24 2021-06-14            County Guilford        Race
-#&gt; 268:  2021-10-24 2021-06-28            County Guilford        Race
-#&gt; 269:  2021-10-24 2021-07-12            County Guilford        Race
-#&gt; 270:  2021-10-24 2021-07-19            County Guilford        Race
-#&gt; 271:  2021-10-24 2021-07-26            County Guilford        Race
-#&gt;        demographic_identity  status                             variable
-#&gt;   1:                  Other partial People at Least Partially Vaccinated
-#&gt;   2:                  White partial People at Least Partially Vaccinated
-#&gt;   3:                  White partial People at Least Partially Vaccinated
-#&gt;   4: Missing or Undisclosed partial People at Least Partially Vaccinated
-#&gt;   5: Missing or Undisclosed partial People at Least Partially Vaccinated
-#&gt;  ---                                                                    
-#&gt; 267: Missing or Undisclosed partial People at Least Partially Vaccinated
-#&gt; 268: Missing or Undisclosed partial People at Least Partially Vaccinated
-#&gt; 269: Missing or Undisclosed partial People at Least Partially Vaccinated
-#&gt; 270: Missing or Undisclosed partial People at Least Partially Vaccinated
-#&gt; 271: Missing or Undisclosed partial People at Least Partially Vaccinated
-#&gt;      county_demo_pop vax_n
-#&gt;   1:              NA   390
-#&gt;   2:          306101  7496
-#&gt;   3:          306101  9099
-#&gt;   4:              NA   388
-#&gt;   5:              NA   233
-#&gt;  ---                      
-#&gt; 267:              NA   175
-#&gt; 268:              NA   132
-#&gt; 269:              NA   118
-#&gt; 270:              NA   202
-#&gt; 271:              NA   243</div></pre>
+#&gt; 273:  2021-10-28 2021-01-11            County Guilford        Race
+#&gt; 274:  2021-10-28 2021-01-18            County Guilford        Race
+#&gt; 275:  2021-10-28 2021-01-25            County Guilford        Race
+#&gt; 276:  2021-10-28 2021-02-01            County Guilford        Race
+#&gt; 277:  2021-10-28 2021-02-08            County Guilford        Race
+#&gt;                   demographic_identity  status
+#&gt;   1: American Indian or Alaskan Native partial
+#&gt;   2: American Indian or Alaskan Native partial
+#&gt;   3: American Indian or Alaskan Native partial
+#&gt;   4: American Indian or Alaskan Native partial
+#&gt;   5: American Indian or Alaskan Native partial
+#&gt;  ---                                          
+#&gt; 273:                             Other partial
+#&gt; 274:                             Other partial
+#&gt; 275:                             Other partial
+#&gt; 276:                             Other partial
+#&gt; 277:                             Other partial
+#&gt;                                  variable county_demo_pop vax_n
+#&gt;   1: People at Least Partially Vaccinated            4610    23
+#&gt;   2: People at Least Partially Vaccinated            4610    20
+#&gt;   3: People at Least Partially Vaccinated            4610    15
+#&gt;   4: People at Least Partially Vaccinated            4610    21
+#&gt;   5: People at Least Partially Vaccinated            4610    26
+#&gt;  ---                                                           
+#&gt; 273: People at Least Partially Vaccinated              NA   116
+#&gt; 274: People at Least Partially Vaccinated              NA   333
+#&gt; 275: People at Least Partially Vaccinated              NA   172
+#&gt; 276: People at Least Partially Vaccinated              NA   510
+#&gt; 277: People at Least Partially Vaccinated              NA   911</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
