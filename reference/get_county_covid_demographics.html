@@ -147,50 +147,56 @@ interest</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-datatable.com'>data.table</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘data.table’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:dplyr’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    between, first, last</span></div><div class='input'><span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>get_county_covid_demographics</span><span class='op'>(</span>region <span class='op'>=</span> <span class='st'>"Guilford"</span>, demographic <span class='op'>=</span> <span class='st'>"age"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Data valid as of: 2021-10-17</span>
-#&gt; <span class='message'>Use with caution.</span></div><div class='input'>
-<span class='va'>out</span><span class='op'>[</span>,<span class='va'>per_capita</span><span class='op'>:=</span><span class='va'>cases</span><span class='op'>/</span><span class='op'>(</span><span class='va'>population</span><span class='op'>/</span><span class='fl'>100000</span><span class='op'>)</span><span class='op'>]</span>
-</div><div class='output co'>#&gt;          metric   county    week_of demographic cases deaths category
-#&gt;   1:       0-17 Guilford 2020-04-26   age_group     7      0      age
-#&gt;   2:       0-17 Guilford 2020-05-03   age_group     7      0      age
-#&gt;   3:       0-17 Guilford 2020-05-24   age_group    28      0      age
-#&gt;   4:       0-17 Guilford 2020-05-31   age_group    27      0      age
-#&gt;   5:       0-17 Guilford 2020-06-14   age_group    42      0      age
-#&gt;  ---                                                                 
-#&gt; 613: Suppressed Guilford 2020-08-02   age_group     0      0     &lt;NA&gt;
-#&gt; 614: Suppressed Guilford 2020-08-09   age_group     0      0     &lt;NA&gt;
-#&gt; 615: Suppressed Guilford 2020-08-09   age_group     0      0     &lt;NA&gt;
-#&gt; 616: Suppressed Guilford 2020-08-09   age_group     0      0     &lt;NA&gt;
-#&gt; 617: Suppressed Guilford 2020-08-09   age_group     0      0     &lt;NA&gt;
-#&gt;      population per_capita
-#&gt;   1:     117830   5.940762
-#&gt;   2:     117830   5.940762
-#&gt;   3:     117830  23.763048
-#&gt;   4:     117830  22.914368
-#&gt;   5:     117830  35.644573
-#&gt;  ---                      
-#&gt; 613:         NA         NA
-#&gt; 614:         NA         NA
-#&gt; 615:         NA         NA
-#&gt; 616:         NA         NA
-#&gt; 617:         NA         NA</div><div class='input'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>out</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>week_of</span>, <span class='va'>per_capita</span>, colour <span class='op'>=</span> <span class='va'>metric</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"top"</span><span class='op'>)</span><span class='op'>+</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
-title <span class='op'>=</span> <span class='st'>"SARS-CoV-2 Cases per 100k Residents"</span>,
-subtitle <span class='op'>=</span> <span class='st'>"Guilford County, North Carolina"</span>,
-x <span class='op'>=</span> <span class='st'>"Cases per 100k"</span>,
-y <span class='op'>=</span> <span class='cn'>NULL</span>
-<span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 115 row(s) containing missing values (geom_path).</span></div><div class='img'><img src='get_county_covid_demographics-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-datatable.com'>data.table</a></span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: ‘data.table’</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from ‘package:dplyr’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     between, first, last</span>
+<span class='r-in'><span class='va'>out</span> <span class='op'>&lt;-</span> <span class='fu'>get_county_covid_demographics</span><span class='op'>(</span>region <span class='op'>=</span> <span class='st'>"Guilford"</span>, demographic <span class='op'>=</span> <span class='st'>"age"</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Data valid as of: 2021-10-24</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Use with caution.</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>out</span><span class='op'>[</span>,<span class='va'>per_capita</span><span class='op'>:=</span><span class='va'>cases</span><span class='op'>/</span><span class='op'>(</span><span class='va'>population</span><span class='op'>/</span><span class='fl'>100000</span><span class='op'>)</span><span class='op'>]</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>          metric   county    week_of demographic cases deaths category</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   1:       0-17 Guilford 2020-04-12   age_group     1      0      age</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   2:       0-17 Guilford 2020-04-26   age_group     7      0      age</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   3:       0-17 Guilford 2020-05-03   age_group     7      0      age</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   4:       0-17 Guilford 2020-05-10   age_group     7      0      age</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   5:       0-17 Guilford 2020-05-17   age_group    10      0      age</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  ---                                                                 </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 619: Suppressed Guilford 2020-08-16   age_group     0      1     &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 620: Suppressed Guilford 2020-09-20   age_group     0      1     &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 621: Suppressed Guilford 2021-02-28   age_group     0      0     &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 622: Suppressed Guilford 2021-02-28   age_group     0      0     &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 623: Suppressed Guilford 2021-04-11   age_group     0      0     &lt;NA&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      population per_capita</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   1:     117830  0.8486803</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   2:     117830  5.9407621</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   3:     117830  5.9407621</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   4:     117830  5.9407621</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   5:     117830  8.4868030</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  ---                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 619:         NA         NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 620:         NA         NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 621:         NA         NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 622:         NA         NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 623:         NA         NA</span>
+<span class='r-in'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>out</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>week_of</span>, <span class='va'>per_capita</span>, colour <span class='op'>=</span> <span class='va'>metric</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span></span>
+<span class='r-in'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span></span>
+<span class='r-in'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span></span>
+<span class='r-in'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"top"</span><span class='op'>)</span><span class='op'>+</span></span>
+<span class='r-in'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span class='r-in'>title <span class='op'>=</span> <span class='st'>"SARS-CoV-2 Cases per 100k Residents"</span>,</span>
+<span class='r-in'>subtitle <span class='op'>=</span> <span class='st'>"Guilford County, North Carolina"</span>,</span>
+<span class='r-in'>x <span class='op'>=</span> <span class='st'>"Cases per 100k"</span>,</span>
+<span class='r-in'>y <span class='op'>=</span> <span class='cn'>NULL</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Removed 115 row(s) containing missing values (geom_path).</span>
+<span class='r-plt img'><img src='get_county_covid_demographics-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

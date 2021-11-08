@@ -147,48 +147,49 @@ partially or fully vaccinated. Default of NULL returns both.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='op'>{</span>
-
-<span class='fu'>get_vaccinations_demo</span><span class='op'>(</span>county_list <span class='op'>=</span> <span class='st'>"Guilford"</span>,
-                      demographic <span class='op'>=</span> <span class='st'>'race'</span>, status <span class='op'>=</span> <span class='st'>'partial'</span><span class='op'>)</span>
-
-<span class='op'>}</span>
-</div><div class='output co'>#&gt;      date_pulled    week_of aggregation_level   county demographic
-#&gt;   1:  2021-10-28 2021-06-14            County Guilford        Race
-#&gt;   2:  2021-10-28 2021-06-21            County Guilford        Race
-#&gt;   3:  2021-10-28 2021-06-28            County Guilford        Race
-#&gt;   4:  2021-10-28 2021-07-05            County Guilford        Race
-#&gt;   5:  2021-10-28 2021-07-12            County Guilford        Race
-#&gt;  ---                                                              
-#&gt; 273:  2021-10-28 2021-01-11            County Guilford        Race
-#&gt; 274:  2021-10-28 2021-01-18            County Guilford        Race
-#&gt; 275:  2021-10-28 2021-01-25            County Guilford        Race
-#&gt; 276:  2021-10-28 2021-02-01            County Guilford        Race
-#&gt; 277:  2021-10-28 2021-02-08            County Guilford        Race
-#&gt;                   demographic_identity  status
-#&gt;   1: American Indian or Alaskan Native partial
-#&gt;   2: American Indian or Alaskan Native partial
-#&gt;   3: American Indian or Alaskan Native partial
-#&gt;   4: American Indian or Alaskan Native partial
-#&gt;   5: American Indian or Alaskan Native partial
-#&gt;  ---                                          
-#&gt; 273:                             Other partial
-#&gt; 274:                             Other partial
-#&gt; 275:                             Other partial
-#&gt; 276:                             Other partial
-#&gt; 277:                             Other partial
-#&gt;                                  variable county_demo_pop vax_n
-#&gt;   1: People at Least Partially Vaccinated            4610    23
-#&gt;   2: People at Least Partially Vaccinated            4610    20
-#&gt;   3: People at Least Partially Vaccinated            4610    15
-#&gt;   4: People at Least Partially Vaccinated            4610    21
-#&gt;   5: People at Least Partially Vaccinated            4610    26
-#&gt;  ---                                                           
-#&gt; 273: People at Least Partially Vaccinated              NA   116
-#&gt; 274: People at Least Partially Vaccinated              NA   333
-#&gt; 275: People at Least Partially Vaccinated              NA   172
-#&gt; 276: People at Least Partially Vaccinated              NA   510
-#&gt; 277: People at Least Partially Vaccinated              NA   911</div></pre>
+    <pre class="examples"><span class='r-in'><span class='op'>{</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>get_vaccinations_demo</span><span class='op'>(</span>county_list <span class='op'>=</span> <span class='st'>"Guilford"</span>,</span>
+<span class='r-in'>                      demographic <span class='op'>=</span> <span class='st'>'race'</span>, status <span class='op'>=</span> <span class='st'>'partial'</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      date_pulled    week_of aggregation_level   county demographic</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   1:  2021-11-07 2020-12-21            County Guilford        Race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   2:  2021-11-07 2021-01-11            County Guilford        Race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   3:  2021-11-07 2021-05-17            County Guilford        Race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   4:  2021-11-07 2021-05-24            County Guilford        Race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   5:  2021-11-07 2021-06-21            County Guilford        Race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  ---                                                              </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 279:  2021-11-07 2021-09-27            County Guilford        Race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 280:  2021-11-07 2021-10-04            County Guilford        Race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 281:  2021-11-07 2021-10-18            County Guilford        Race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 282:  2021-11-07 2021-10-25            County Guilford        Race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 283:  2021-11-07 2021-11-01            County Guilford        Race</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      demographic_identity  status                             variable</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   1:                White partial People at Least Partially Vaccinated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   2:                White partial People at Least Partially Vaccinated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   3:                White partial People at Least Partially Vaccinated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   4:                White partial People at Least Partially Vaccinated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   5:                White partial People at Least Partially Vaccinated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  ---                                                                  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 279:                White partial People at Least Partially Vaccinated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 280:                White partial People at Least Partially Vaccinated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 281:                White partial People at Least Partially Vaccinated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 282:                White partial People at Least Partially Vaccinated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 283:                White partial People at Least Partially Vaccinated</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      county_demo_pop vax_n</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   1:          306101  1403</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   2:          306101  5058</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   3:          306101  3520</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   4:          306101  1835</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   5:          306101   880</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  ---                      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 279:          306101   780</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 280:          306101   757</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 281:          306101   398</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 282:          306101   418</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 283:          306101   171</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

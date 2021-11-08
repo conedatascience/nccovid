@@ -136,34 +136,144 @@
     <p>double, the intensity of epidemic calculated via Shannon index</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'>nccovid</span><span class='fu'>::</span><span class='fu'><a href='get_covid_state.html'>get_covid_state</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Guilford"</span>, <span class='st'>"Forsyth"</span>, <span class='st'>"Mecklenburg"</span>, <span class='st'>"Wake"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Using: cone as the data source</span></div><div class='output co'>#&gt; <span class='message'>Last date available: 2021-10-29</span></div><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-
-<span class='va'>counties</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>dat</span><span class='op'>$</span><span class='va'>county</span><span class='op'>)</span>
-<span class='va'>entropy_values</span> <span class='op'>=</span> <span class='va'>dat</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>county</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_split.html'>group_split</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'>calculate_shannon</span><span class='op'>(</span>incidence <span class='op'>=</span> <span class='va'>x</span><span class='op'>$</span><span class='va'>cases_daily</span><span class='op'>)</span> <span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: entropy</span></div><div class='input'>  
-<span class='va'>entropy_values</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>county <span class='op'>=</span> <span class='va'>counties</span>, intensity <span class='op'>=</span> <span class='va'>entropy_values</span><span class='op'>)</span>
-  <span class='va'>entropy_values</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>county</span> <span class='op'>%in%</span> <span class='fu'>nccovid</span><span class='fu'>::</span><span class='va'><a href='triad_counties.html'>triad_counties</a></span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>county</span>,<span class='va'>intensity</span><span class='op'>)</span>, <span class='va'>intensity</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>
-    title <span class='op'>=</span> <span class='st'>"Epidemic Intensity"</span>
-  <span class='op'>)</span>
-</div><div class='img'><img src='calculate_shannon-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'>nccovid</span><span class='fu'>::</span><span class='fu'><a href='get_covid_state.html'>get_covid_state</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Guilford"</span>, <span class='st'>"Forsyth"</span>, <span class='st'>"Mecklenburg"</span>, <span class='st'>"Wake"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Using: cone as the data source</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Last date available: 2021-11-05</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: ‘dplyr’</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from ‘package:stats’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     filter, lag</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from ‘package:base’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     intersect, setdiff, setequal, union</span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>counties</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>dat</span><span class='op'>$</span><span class='va'>county</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>entropy_values</span> <span class='op'>=</span> <span class='va'>dat</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> </span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>county</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> </span>
+<span class='r-in'>  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_split.html'>group_split</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> </span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'>calculate_shannon</span><span class='op'>(</span>incidence <span class='op'>=</span> <span class='va'>x</span><span class='op'>$</span><span class='va'>cases_daily</span><span class='op'>)</span> <span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/unlist.html'>unlist</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required namespace: entropy</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> In order to use this function, the entropy package must be available</span>
+<span class='r-in'>  </span>
+<span class='r-in'><span class='va'>entropy_values</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>county <span class='op'>=</span> <span class='va'>counties</span>, intensity <span class='op'>=</span> <span class='va'>entropy_values</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='va'>entropy_values</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> </span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>county</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'>nccovid</span><span class='fu'>::</span><span class='va'><a href='triad_counties.html'>triad_counties</a></span><span class='op'>)</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span> </span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>county</span>,<span class='va'>intensity</span><span class='op'>)</span>, <span class='va'>intensity</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span class='r-in'>    title <span class='op'>=</span> <span class='st'>"Epidemic Intensity"</span></span>
+<span class='r-in'>  <span class='op'>)</span></span>
+<span class='r-plt img'><img src='calculate_shannon-1.png' alt='' width='700' height='433' /></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
