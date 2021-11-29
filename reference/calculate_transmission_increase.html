@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CDC Social Vulnerability for North Carolina by County — nc_svi_county • nccovid</title>
+<title>Transmission Increase — calculate_transmission_increase • nccovid</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="CDC Social Vulnerability for North Carolina by County — nc_svi_county" />
-<meta property="og:description" content="CDC Social Vulnerability for North Carolina by County" />
+<meta property="og:title" content="Transmission Increase — calculate_transmission_increase" />
+<meta property="og:description" content="Calculating the Transmission Increase from Factors" />
 
 
 
@@ -111,25 +111,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>CDC Social Vulnerability for North Carolina by County</h1>
-    <small class="dont-index">Source: <a href='https://github.com/conedatascience/nccovid/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>nc_svi_county.Rd</code></div>
+    <h1>Transmission Increase</h1>
+    <small class="dont-index">Source: <a href='https://github.com/conedatascience/nccovid/blob/master/R/calculate_transmission_increase.R'><code>R/calculate_transmission_increase.R</code></a></small>
+    <div class="hidden name"><code>calculate_transmission_increase.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>CDC Social Vulnerability for North Carolina by County</p>
+    <p>Calculating the Transmission Increase from Factors</p>
     </div>
 
-    <pre class="usage"><span class='va'>nc_svi_county</span></pre>
+    <pre class="usage"><span class='fu'>calculate_transmission_increase</span><span class='op'>(</span><span class='va'>R_w</span>, <span class='va'>rho</span>, D <span class='op'>=</span> <span class='fl'>4.7</span>, omega <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>R_w</th>
+      <td><p>a numeric, the baseline effective reproduction number</p></td>
+    </tr>
+    <tr>
+      <th>rho</th>
+      <td><p>a numeric, the estimated transmission advantage</p></td>
+    </tr>
+    <tr>
+      <th>D</th>
+      <td><p>a numeric, the generation time (average)</p></td>
+    </tr>
+    <tr>
+      <th>omega</th>
+      <td><p>a numeric with default of NULL indicating proportion of the 
+population that has immunity against earlier variants</p></td>
+    </tr>
+    </table>
 
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>a data.frame</p>
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p>[U.S. Centers for Disease Prevention and Control (CDC) Social Vulnerability Index (SVI)](https://svi.cdc.gov/)</p>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='fl'>6</span><span class='op'>)</span> <span class='op'>*</span> <span class='fu'>calculate_transmission_increase</span><span class='op'>(</span>R_w <span class='op'>=</span> <span class='fl'>.8</span>, <span class='fl'>.43</span>, D <span class='op'>=</span> <span class='fl'>5.2</span>, omega <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 11.18 16.77</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>,<span class='fl'>6</span><span class='op'>)</span> <span class='op'>*</span> <span class='fu'>calculate_transmission_increase</span><span class='op'>(</span>R_w <span class='op'>=</span> <span class='fl'>.8</span>, <span class='fl'>.43</span>, D <span class='op'>=</span> <span class='fl'>5.2</span>, omega <span class='op'>=</span> <span class='fl'>.25</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 33.54 50.31</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
