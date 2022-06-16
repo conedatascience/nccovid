@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nccovid</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.15</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.16</span>
       </span>
     </div>
 
@@ -60,8 +60,11 @@
     <h2>Arguments</h2>
     <dl><dt>county_list</dt>
 <dd><p>a string, the county to pull. default is all counties</p></dd>
+
+
 <dt>add_population</dt>
 <dd><p>a boolean, default of TRUE to add a population</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
@@ -78,11 +81,11 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   4: Guilford 2021-01-14   8857   1768               8857            1768</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   5: Guilford 2021-01-19  12425   2450              12425            2450</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ---                                                                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 380: Guilford 2022-04-10 346798 310004             346798          310004</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 381: Guilford 2022-04-11 346798 310004             346798          310004</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 382: Guilford 2022-04-12 346798 310004             346798          310004</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 383: Guilford 2022-04-13 346798 310004             346798          310004</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 384: Guilford 2022-04-14 347059 310244             347059          310244</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 439: Guilford 2022-06-11 349163 312490             349163          312490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 440: Guilford 2022-06-12 349163 312490             349163          312490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 441: Guilford 2022-06-13 349163 312490             349163          312490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 442: Guilford 2022-06-14 349163 312490             349163          312490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 443: Guilford 2022-06-15 349355 312700             349355          312700</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      daily_dose_1 daily_dose_2 daily_partial_vax daily_full_vax days_available</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   1:         4424            2              4424              2             22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   2:         1050          266              1050            266              3</span>
@@ -90,11 +93,11 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   4:         1850          660              1850            660              2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   5:         3568          682              3568            682              5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ---                                                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 380:            0            0                 0              0              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 381:            0            0                 0              0              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 382:            0            0                 0              0              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 383:            0            0                 0              0              1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 384:          261          240               261            240              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 439:            0            0                 0              0              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 440:            0            0                 0              0              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 441:            0            0                 0              0              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 442:            0            0                 0              0              1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 443:          192          210               192            210              1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      cum_days dose_1_rate  dose_2_rate dose_1_running_rate dose_2_running_rate</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   1:       22    201.0909   0.09090909            201.0909          0.09090909</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   2:       25    350.0000  88.66666667            218.9600         10.72000000</span>
@@ -102,11 +105,11 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   4:       31    925.0000 330.00000000            285.7097         57.03225806</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   5:       36    713.6000 136.40000000            345.1389         68.05555556</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ---                                                                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 380:      482      0.0000   0.00000000            719.4979        643.16182573</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 381:      483      0.0000   0.00000000            718.0083        641.83022774</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 382:      484      0.0000   0.00000000            716.5248        640.50413223</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 383:      485      0.0000   0.00000000            715.0474        639.18350515</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 384:      486    261.0000 240.00000000            714.1132        638.36213992</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 439:      544      0.0000   0.00000000            641.8438        574.43014706</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 440:      545      0.0000   0.00000000            640.6661        573.37614679</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 441:      546      0.0000   0.00000000            639.4927        572.32600733</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 442:      547      0.0000   0.00000000            638.3236        571.27970750</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 443:      548    192.0000 210.00000000            637.5091        570.62043796</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      partial_vax_rate full_vax_rate partial_vax_running_rate</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   1:         201.0909    0.09090909                 201.0909</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   2:         350.0000   88.66666667                 218.9600</span>
@@ -114,11 +117,11 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   4:         925.0000  330.00000000                 285.7097</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   5:         713.6000  136.40000000                 345.1389</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ---                                                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 380:           0.0000    0.00000000                 719.4979</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 381:           0.0000    0.00000000                 718.0083</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 382:           0.0000    0.00000000                 716.5248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 383:           0.0000    0.00000000                 715.0474</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 384:         261.0000  240.00000000                 714.1132</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 439:           0.0000    0.00000000                 641.8438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 440:           0.0000    0.00000000                 640.6661</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 441:           0.0000    0.00000000                 639.4927</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 442:           0.0000    0.00000000                 638.3236</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 443:         192.0000  210.00000000                 637.5091</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      full_vax_running_rate population</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   1:            0.09090909     545348</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   2:           10.72000000     545348</span>
@@ -126,11 +129,11 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>   4:           57.03225806     545348</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   5:           68.05555556     545348</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ---                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 380:          643.16182573     545348</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 381:          641.83022774     545348</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 382:          640.50413223     545348</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 383:          639.18350515     545348</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 384:          638.36213992     545348</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 439:          574.43014706     545348</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 440:          573.37614679     545348</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 441:          572.32600733     545348</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 442:          571.27970750     545348</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 443:          570.62043796     545348</span>
 </code></pre></div>
     </div>
   </div>
@@ -145,7 +148,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>
