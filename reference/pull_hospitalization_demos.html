@@ -18,7 +18,7 @@ as Posted by NCDHHS"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">nccovid</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.16</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.17</span>
       </span>
     </div>
 
@@ -55,7 +55,7 @@ as Posted by NCDHHS</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pull_hospitalization_demos</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pull_hospitalization_demos</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="value">
@@ -67,30 +67,30 @@ as Posted by NCDHHS</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">o</span> <span class="op">&lt;-</span> <span class="fu">pull_hospitalization_demos</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">age_only</span> <span class="op">&lt;-</span><span class="va">o</span><span class="op">[</span><span class="va">demographic</span><span class="op">==</span><span class="st">"Age"</span><span class="op">&amp;</span><span class="va">covid_status</span><span class="op">==</span><span class="st">"Confirmed"</span><span class="op">]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">age_only</span> <span class="op">&lt;-</span> <span class="va">age_only</span><span class="op">[</span><span class="va">date</span><span class="op">&lt;</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">-</span><span class="fl">90</span><span class="op">]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, </span>
-<span class="r-in">   xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">age_only</span><span class="op">$</span><span class="va">date</span><span class="op">)</span>, </span>
-<span class="r-in">   ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">age_only</span><span class="op">$</span><span class="va">value</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"Admissions"</span>, </span>
-<span class="r-in">   xlab<span class="op">=</span><span class="st">"Date"</span>, main <span class="op">=</span> <span class="st">"Admissions by Age"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">buckets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/duplicated.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">age_only</span><span class="op">$</span><span class="va">category</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">my_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#00A2B2"</span>, <span class="st">"#F1BD51"</span>, <span class="st">"#00205C"</span>, <span class="st">"#c9c9c9"</span>, <span class="st">"#7750A9"</span>, <span class="st">"#B7D866"</span>, </span>
-<span class="r-in">           <span class="st">"#5C5859"</span>, <span class="st">"#DB2B27"</span>, <span class="st">"#63CCFF"</span>, <span class="st">"#000000"</span>, <span class="st">"#123453"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">my_cols</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">buckets</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">buckets</span><span class="op">)</span><span class="op">{</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">age_only</span><span class="op">[</span><span class="va">category</span><span class="op">==</span><span class="va">i</span><span class="op">]</span><span class="op">$</span><span class="va">date</span>,</span>
-<span class="r-in">      <span class="va">age_only</span><span class="op">[</span><span class="va">category</span><span class="op">==</span><span class="va">i</span><span class="op">]</span><span class="op">$</span><span class="va">value</span>,</span>
-<span class="r-in">      col <span class="op">=</span> <span class="va">my_cols</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">o</span> <span class="op">&lt;-</span> <span class="fu">pull_hospitalization_demos</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">age_only</span> <span class="op">&lt;-</span><span class="va">o</span><span class="op">[</span><span class="va">demographic</span><span class="op">==</span><span class="st">"Age"</span><span class="op">&amp;</span><span class="va">covid_status</span><span class="op">==</span><span class="st">"Confirmed"</span><span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">age_only</span> <span class="op">&lt;-</span> <span class="va">age_only</span><span class="op">[</span><span class="va">date</span><span class="op">&lt;</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">-</span><span class="fl">90</span><span class="op">]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="cn">NULL</span>, </span></span>
+<span class="r-in"><span>   xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">age_only</span><span class="op">$</span><span class="va">date</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>   ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">age_only</span><span class="op">$</span><span class="va">value</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"Admissions"</span>, </span></span>
+<span class="r-in"><span>   xlab<span class="op">=</span><span class="st">"Date"</span>, main <span class="op">=</span> <span class="st">"Admissions by Age"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">buckets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">age_only</span><span class="op">$</span><span class="va">category</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">my_cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#00A2B2"</span>, <span class="st">"#F1BD51"</span>, <span class="st">"#00205C"</span>, <span class="st">"#c9c9c9"</span>, <span class="st">"#7750A9"</span>, <span class="st">"#B7D866"</span>, </span></span>
+<span class="r-in"><span>           <span class="st">"#5C5859"</span>, <span class="st">"#DB2B27"</span>, <span class="st">"#63CCFF"</span>, <span class="st">"#000000"</span>, <span class="st">"#123453"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">my_cols</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">buckets</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">buckets</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">age_only</span><span class="op">[</span><span class="va">category</span><span class="op">==</span><span class="va">i</span><span class="op">]</span><span class="op">$</span><span class="va">date</span>,</span></span>
+<span class="r-in"><span>      <span class="va">age_only</span><span class="op">[</span><span class="va">category</span><span class="op">==</span><span class="va">i</span><span class="op">]</span><span class="op">$</span><span class="va">value</span>,</span></span>
+<span class="r-in"><span>      col <span class="op">=</span> <span class="va">my_cols</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-plt img"><img src="pull_hospitalization_demos-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -105,7 +105,7 @@ as Posted by NCDHHS</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
